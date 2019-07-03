@@ -1,0 +1,22 @@
+Key:
+- what to do
++ done
+~ not necessary
+
+you need to make:
+- a starting menu
+- losing screen
+- winning screen
+- mad-lib game as bossgame
++ pause menu
+- the animations of player
+- the 3 enemies level 1
+~ the 3 enemies level 2
+~ the 3 enemies level 3
+- animations of the 3 enemies level 1
+~ animations of the 3 enemies level 2
+~ animations of the 3 enemies level 3
+- bosses at least one
+- boss animations.
+- get music
+- get sound-effects.
