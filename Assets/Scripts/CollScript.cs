@@ -6,7 +6,6 @@ public class CollScript : MonoBehaviour {
 
     // get the sprite in gameobject
     public GameObject LittleLight;
-    // let it count, let it count
     public static int lightCount;
     
 
@@ -14,23 +13,20 @@ public class CollScript : MonoBehaviour {
 	void Start () {
         //there it is, the wittlewhitey
         LittleLight = GetComponent<GameObject>();
-        // i actually frogot how the song went on...
+        // all objects add one to the count.
         lightCount++;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        // y u no work?
-        // it misses a couple and goes around saying I have em all 
-        // but noooooo
-        // tch.
+        //check in console if you have them all.
 		if(lightCount <= 0f)
         {
             print("You got 'em all!");
         }
 	}
 
-    // or are you the one. Aren't you counting em right, am I touching you indecently? Is that it?
+    // if hit by player, get points, destroy object and lose one on lightCount
     void OnTriggerEnter2D(Collider2D player)
     {
         

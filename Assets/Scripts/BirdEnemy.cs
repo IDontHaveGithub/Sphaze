@@ -10,8 +10,6 @@ public class BirdEnemy : MonoBehaviour {
 
     // how much damage when touching player.
     private float Dmg = 5f;
-
-    // how much health, before dying.
     public float HP = 150;
 
 	// nothing to initiate but moving.
@@ -19,7 +17,7 @@ public class BirdEnemy : MonoBehaviour {
         StartCoroutine(MovementHandle());
     }
 	
-	// this is the movement itself, but ranx and rany are being done elsewhere, so it doesn't do that all the time, but just every 2 secs.
+	// this is the movement itself
 	void Update () {
         transform.Translate(ranx *Time.deltaTime, rany * Time.deltaTime, 0);
     }

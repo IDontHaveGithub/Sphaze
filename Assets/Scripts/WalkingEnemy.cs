@@ -47,7 +47,6 @@ public class WalkingEnemy : MonoBehaviour {
         if(collision.gameObject.tag == "Player")
         {
             scriptSpeler.HP = scriptSpeler.HP - Dmg;
-            
         }
     }
 

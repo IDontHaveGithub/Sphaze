@@ -42,7 +42,6 @@ public class FlowerEnemy : MonoBehaviour {
         if (collision.gameObject.tag == "Player")
         {
             scriptSpeler.HP = scriptSpeler.HP - Dmg;
-
         }
     }
 

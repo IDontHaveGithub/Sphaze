@@ -7,38 +7,31 @@ public class CollSpawn : MonoBehaviour {
 	// get the object
 	public GameObject SpawnStuff;
     
-    // it takes 2 sec after all of the colls have been got to respawn.... 
-    //bit too much darling, maybe spawn before they're all gone, 
-    //so you dont have to search for that one left?
-
-        // nehhhh
     public float spawnDelay = 2f;
 
 
-    // You have an instant spawning now, but maybe you want a rando spawning of 5 that spawns others if you get one after a while.
-    // so spawning after time and random places of the positions, check out, how to, plz.
-
-
     // yes I know how to now, give me a sec.
-    void Start () {
-        
+    void Start()
+    {
         // first spawning
-			foreach (Transform child in transform) {
-				GameObject spawn = Instantiate (SpawnStuff, child.transform.position, Quaternion.identity) as GameObject;
-				spawn.transform.parent = child;
-			}
+        foreach (Transform child in transform)
+        {
+            GameObject spawn = Instantiate(SpawnStuff, child.transform.position, Quaternion.identity) as GameObject;
+            spawn.transform.parent = child;
+        }
 
     }
 
     private void Update()
     {
-        // how to respawn, first call function... >> go to said function >>
+        // continiously check if everything is dead then call spawn
         if (AllDead())
         {
             SpawnAgain();
         }
     }
 
+    //the check if all dead
     bool AllDead()
     {
         foreach (Transform childpositionGameObject in transform)
@@ -51,6 +44,7 @@ public class CollSpawn : MonoBehaviour {
         return true;
     }
 
+    //check if the next position is free to spawn in
     Transform NextFreePosition()
     {
         foreach (Transform childpositionGameObject in transform)
@@ -63,10 +57,7 @@ public class CollSpawn : MonoBehaviour {
         return null;
     }
 
-    // Respawn!  >nailed it<
-    // turns out, after carefully testing, it doesn't actually respawn, no error, no problems, but no respawn...
-    // I'm sad now...
-    // nevermind, the comment that was saying I had them all missed a couple, it works, it's perfect.
+    // Respawn
     void SpawnAgain()
     {
         Transform freePosition = NextFreePosition();// one function up

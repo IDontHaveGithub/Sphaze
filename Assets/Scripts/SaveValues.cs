@@ -6,9 +6,9 @@ using UnityEngine;
 
 
 public class SaveValues : MonoBehaviour {
-    // Made by Eric, cause Lotte was too lazy
+    // Made by Eric, cause Lotte was too lazy, except the comments, that was Lotte, cause Eric forgot.
 
-        // the amount of fields, all given inside the inspector
+    // the amount of fields, all given inside the inspector
 	public InputField text1, text2, text3, text4;
 	
     // and the result, for some reason not just a text field.
@@ -35,7 +35,7 @@ public class SaveValues : MonoBehaviour {
 		SceneManager.LoadScene ("Results");
 	}
 
-    // 'the result' aka the one story we could come up with in the limited time left after the website.
+    // 'the result' aka the one story we could come up with in the limited time left after the website.(that didn't even get finished...
 	void Update(){
 		result1.text = "The " + words[0] + " millionaire came home one late night to find his " + words [1] 
             + " " + words [2] + " passed out on the floor in the livingroom! And boy was he " + words[3] 

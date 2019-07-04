@@ -52,11 +52,11 @@ public class scriptSpeler : MonoBehaviour {
 
 	void FixedUpdate () {
 		if (jump == true) {
-			player.AddForce (new Vector2 (0f, jumpForce)); // how to go up, wen jumping
+			player.AddForce (new Vector2 (0f, jumpForce)); // how to go up, when jumping
 			jump = false; // so if this gets deleted you can fly, well at least you go up and up and up.
 			grounded = false; // I don't want a double jump.
 		}
-        float Hory = Input.GetAxis("Hor"); // to get the horzontal axis, so you get the way you walk to get the way you look
+        float Hory = Input.GetAxis("Hor"); // to get the horizontal axis, so you get the way you walk to get the way you look
         HandleMovement(Hory); // and to do the walk
         Flip(Hory); // and to do the flip
 	}
@@ -89,7 +89,7 @@ public class scriptSpeler : MonoBehaviour {
             mater = invent.GetComponent<Renderer>().material;
             mater.color = Color.yellow;
         }
-        if(coll.gameObject.tag == "End") // collider to get to the bossfight.
+        if(coll.gameObject.tag == "End" /* && all the flippin lights */) // collider to get to the bossfight.
         {
             Door();
         }

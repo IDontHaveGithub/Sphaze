@@ -21,7 +21,7 @@ public class SpaceInfo : MonoBehaviour {
         if(collision.gameObject.tag == "Player")
         {
             InfoSpace.SetActive(true);
-            Score.points++;
+            Score.points++; //2019 update, good to use for pointwhores...
         }
     }
 

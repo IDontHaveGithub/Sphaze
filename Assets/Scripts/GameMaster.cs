@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class GameMaster : MonoBehaviour {
 
-    // so I made this before the respawnign of the space invaders got put on the internet, geeze louise, it was hard work finding one you know.
+    // so I made this before the respawning of the space invaders got put on the internet, geeze louise, it was hard work finding one you know.
     // it wasn't even up to date, so I had to read four pages of comments to find the answer in there.
 
-    public static GameMaster gm;
+    public static GameMaster instance;
+
 	// Use this for initialization
 	void Start () {
-		if(gm == null)
+		if(instance == null)
         {
-            gm = this;
-
+            instance = this;
         }
 	}
 
@@ -23,17 +23,11 @@ public class GameMaster : MonoBehaviour {
     public void RespawnPlayer()
     {
         Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
-
     }
 	
     public static void KillPlayer(scriptSpeler player)
     {
         Destroy(player.gameObject);
-        gm.RespawnPlayer();
-
+        instance.RespawnPlayer();
     }
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

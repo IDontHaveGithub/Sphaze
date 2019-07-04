@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Gizmo : MonoBehaviour {
 
-    // a lot of this script has been taken away from the camecontrol, 
+    // a lot of this script has been taken away from the cameraControl, 
     //it uses the same script practically, just slight variations of the offset, right and left.
     public Transform Target;
     public float speed = 0.125f;
@@ -26,8 +26,8 @@ public class Gizmo : MonoBehaviour {
     private void Start()
     {
         GizmofacingRight = true;
-        
     }
+
     void FixedUpdate()
     {
 
@@ -35,14 +35,13 @@ public class Gizmo : MonoBehaviour {
         float Hory = Input.GetAxis("Hor");
         Flip(Hory);
 
-        // still part of the cameracontrol, it just follows the targer, in this case the player.
-        // original plan was a pathfoinder, but it didn't work, waste of 5 hours work.
+        // still part of the cameracontrol, it just follows the target, in this case the player.
+        // original plan was a pathfinder, but I'm not good enough yet, so rip.
         if (scriptSpeler.facingRight)
         {
             Vector3 desiredPos = Target.position + offright;
             Vector3 smoothPos = Vector3.Lerp(transform.position, desiredPos, 0.05f);
             transform.position = smoothPos;
-
         }
         else
         {
@@ -64,7 +63,7 @@ public class Gizmo : MonoBehaviour {
         }
 
     }
-    // to find the player after deletion.
+    
     public void Update()
     {
         if (Target == null)
@@ -73,7 +72,7 @@ public class Gizmo : MonoBehaviour {
             return;
         }
     }
-
+    // to find the player after deletion.
     public void FindPlayer(bool findSwitch)
     {
         if (findSwitch == true)
@@ -103,7 +102,7 @@ public class Gizmo : MonoBehaviour {
     }
 
     // wait, Gizmo can die? by missiles?
-    // so this is a useless part, it's just there
+    // so this is a useless part, it's just... there
     void OnTriggerEnter2D(Collider2D col)
     {
         Shoot missile = col.GetComponent<Shoot>();

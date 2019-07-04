@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shoot : MonoBehaviour {
+public class Shoot : MonoBehaviour
+{
 
-    // another form the SpaceInvaders
+    // another from the SpaceInvaders
     // SpaceInvaders MVP!!
     public float schade = 20f;
     public float GetDamage()
@@ -17,7 +18,8 @@ public class Shoot : MonoBehaviour {
         Destroy(gameObject);
     }
 
-	void Update () {
-		Destroy(gameObject, 4);
-	}
+    void Update()
+    {
+        Destroy(gameObject, 4);
+    }
 }
