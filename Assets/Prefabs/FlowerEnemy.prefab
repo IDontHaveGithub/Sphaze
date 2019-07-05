@@ -240,9 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6043c3294b6db1945b4073afd3c0a8a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flower:
-  - {fileID: 21300000, guid: a09583e0dc45e3a4fbc76007a667a087, type: 3}
-  - {fileID: 21300002, guid: a09583e0dc45e3a4fbc76007a667a087, type: 3}
+  HP: 50
 --- !u!212 &212273338459667990
 SpriteRenderer:
   m_ObjectHideFlags: 1
