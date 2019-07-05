@@ -12,9 +12,11 @@ public class BirdEnemy : MonoBehaviour {
     private float Dmg = 5f;
     public float HP = 150;
 
+    public float points = 40f;
+
 	// nothing to initiate but moving.
 	void Start () {
-        StartCoroutine(MovementHandle());
+        Invoke("MovementHandle",2f);
     }
 	
 	// this is the movement itself
@@ -23,13 +25,12 @@ public class BirdEnemy : MonoBehaviour {
     }
 
     // the random int, for random movement, with delay to choose again.
-    IEnumerator MovementHandle()
+    void MovementHandle()
     {
         ranx = Random.Range(-4, 4);
         rany = Random.Range(-4, 4);
-        
-        yield return new WaitForSeconds(2);
-        StartCoroutine(MovementHandle());
+
+        Invoke("MovementHandle", 2f);
     }
     
 

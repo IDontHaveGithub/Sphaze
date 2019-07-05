@@ -20,8 +20,7 @@ public class Gizmo : MonoBehaviour {
     
     // this one could've just stayed facingRight, but it's Gizmo that's doing it.
     public bool GizmofacingRight;
-    // why does Gizmo have HP, he doesn't even die, he's a robot dog.
-    private float HP = 100;
+
 
     private void Start()
     {
@@ -98,22 +97,6 @@ public class Gizmo : MonoBehaviour {
         }
         else {
             Straal.GetComponent<Rigidbody2D>().velocity = new Vector3(-6, 0, 0);
-        }
-    }
-
-    // wait, Gizmo can die? by missiles?
-    // so this is a useless part, it's just... there
-    void OnTriggerEnter2D(Collider2D col)
-    {
-        Shoot missile = col.GetComponent<Shoot>();
-        if (missile)
-        {
-            HP -= missile.GetDamage();
-            if (HP <= 0)
-            {
-                Destroy(gameObject);
-            }
-            missile.Hit();
         }
     }
 

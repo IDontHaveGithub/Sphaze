@@ -14,6 +14,8 @@ public class FlowerEnemy : MonoBehaviour {
     private float Dmg = 3f;
     public float HP = 50;
 
+    public float points = 20f;
+
     // Use this for initialization
 //    void Start () {
 //        GetComponent<SpriteRenderer>().sprite = flower[sprite];
