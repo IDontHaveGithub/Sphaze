@@ -11,10 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/level1.unity
     guid: a0358c111b9319649ae73d83e083adea
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MadLibz 1.unity
     guid: 749d79e3a0ef6024c9dda1e2db9a9912
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MadLibz2.unity
     guid: f4bc1e2e2383cfe4e8a0b43578eadfdf
   - enabled: 1

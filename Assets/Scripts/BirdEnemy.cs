@@ -59,7 +59,7 @@ public class BirdEnemy : MonoBehaviour {
                 Destroy(gameObject);
                 
             }
-            missile.Hit();
+            missile.Hit(this.gameObject);
         }
     }
 

@@ -59,7 +59,7 @@ public class FlowerEnemy : MonoBehaviour {
                 Score.points += 20f;
                 Destroy(gameObject);
             }
-            missile.Hit();
+            missile.Hit(this.gameObject);
         }
     }
 }

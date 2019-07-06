@@ -13,7 +13,7 @@ public class Shoot : MonoBehaviour
         return schade;
     }
 
-    public static void Hit(GameObject gameObject)
+    public void Hit(GameObject gameObject)
     {
         Destroy(gameObject);
     }
