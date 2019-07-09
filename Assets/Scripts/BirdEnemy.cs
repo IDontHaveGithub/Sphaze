@@ -8,11 +8,6 @@ public class BirdEnemy : MonoBehaviour {
     private int ranx;
     private int rany;
 
-    // how much damage when touching player.
-    private float Dmg = 5f;
-    public float HP = 150;
-
-    public float points = 40f;
 
 	// nothing to initiate but moving.
 	void Start () {
@@ -40,28 +35,7 @@ public class BirdEnemy : MonoBehaviour {
         // just so it doesn't glitch through the colliders
         rany = -rany;
         ranx = -ranx;
-        // if player gets hit, it gives damage.
-        if (collision.gameObject.tag == "Player")
-        {
-            scriptSpeler.HP = scriptSpeler.HP - Dmg;
-        }
-    }
-
-    // collider for the bullets of Gizmo, the dog, so they can actually die.
-    void OnTriggerEnter2D(Collider2D col)
-    {
-        Shoot missile = col.GetComponent<Shoot>();
-        if (missile)
-        {
-            HP -= missile.GetDamage();
-            if (HP <= 0)
-            {
-                Score.points += 40f;
-                Destroy(gameObject);
-                
-            }
-            missile.Hit(this.gameObject);
-        }
+       
     }
 
 }

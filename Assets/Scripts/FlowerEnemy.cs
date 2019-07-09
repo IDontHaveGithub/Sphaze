@@ -11,10 +11,6 @@ public class FlowerEnemy : MonoBehaviour {
 //   private int sprite;
 //    private float distance;
 //    GameObject player;
-    private float Dmg = 3f;
-    public float HP = 50;
-
-    public float points = 20f;
 
     // Use this for initialization
 //    void Start () {
@@ -38,28 +34,4 @@ public class FlowerEnemy : MonoBehaviour {
 //       }
 //	}
 
-    // collision to damage the player
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            scriptSpeler.HP = scriptSpeler.HP - Dmg;
-        }
-    }
-
-    // collision to get damage and die.
-    void OnTriggerEnter2D(Collider2D col)
-    {
-        Shoot missile = col.GetComponent<Shoot>();
-        if (missile)
-        {
-            HP -= missile.GetDamage();
-            if (HP <= 0)
-            {
-                Score.points += 20f;
-                Destroy(gameObject);
-            }
-            missile.Hit(this.gameObject);
-        }
-    }
 }

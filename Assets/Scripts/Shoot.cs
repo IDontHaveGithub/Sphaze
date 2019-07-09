@@ -5,19 +5,14 @@ using UnityEngine;
 public class Shoot : MonoBehaviour
 {
 
-    // another from the SpaceInvaders
-    // SpaceInvaders MVP!!
+    //give amount of damage bullet does and return
     public float schade = 20f;
     public float GetDamage()
     {
         return schade;
     }
 
-    public void Hit(GameObject gameObject)
-    {
-        Destroy(gameObject);
-    }
-
+    //destroy bullet after 4 seconds
     void Update()
     {
         Destroy(gameObject, 4);
