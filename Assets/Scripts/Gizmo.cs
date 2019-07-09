@@ -90,13 +90,19 @@ public class Gizmo : MonoBehaviour {
     void Fire()
     {
         Vector3 startPositie = transform.position + new Vector3(0, 0, 0);
-        GameObject Straal = Instantiate(laser, startPositie, Quaternion.identity) as GameObject;
         if (GizmofacingRight)
         {
-            Straal.GetComponent<Rigidbody2D>().velocity = new Vector3(6, 0, 0);
+            laser.transform.localScale = new Vector3(.3f, .3f, 1);//change scale to turn around
+            GameObject Straal = Instantiate(laser, startPositie, Quaternion.identity) as GameObject;//instantiate
+
+            Straal.GetComponent<Rigidbody2D>().velocity = new Vector3(6, 0, 0);//shoot off;
         }
         else {
-            Straal.GetComponent<Rigidbody2D>().velocity = new Vector3(-6, 0, 0);
+            //change sclae to turn around
+            laser.transform.localScale = new Vector3(-.3f,.3f,1);
+            GameObject Straal = Instantiate(laser, startPositie, Quaternion.identity) as GameObject;//instantiate
+
+            Straal.GetComponent<Rigidbody2D>().velocity = new Vector3(-6, 0, 0);//shoot off
         }
     }
 
