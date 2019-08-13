@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class scriptSpeler : MonoBehaviour
 {
-
     private float Horizontal;
     private float speed = 3f;
-    private float jumpForce = 250f;
+    private float jumpForce = 150f;
     private float HP = 100;
 
     // FIXME: why are the collectables done in the player script?
@@ -20,12 +19,12 @@ public class scriptSpeler : MonoBehaviour
 
     private bool jump = false;
     private bool grounded = false;
+    private bool facingRight;
+    private bool flipped;
 
     private Rigidbody2D player;
     private AudioSource Ping;// the sound of collected collectable
-
-
-
+    
     void Start()
     {
         HP = 100; // it's also in start so when you die and respawn it gets reset.
@@ -38,13 +37,13 @@ public class scriptSpeler : MonoBehaviour
     {
         Horizontal = Input.GetAxis("Hor");
         HandleMovement(Horizontal);
-        
+
         // if statement to jump
-        if (Input.GetKeyDown(KeyCode.UpArrow) && grounded == true || Input.GetKeyDown(KeyCode.W) && grounded == true)
-        {
+        if (Input.GetAxis("Vertical") > 0 && grounded)
             jump = true;
-        }
-        // print(HP); // to check if health works
+        else
+            jump = false;
+        
         if (HP <= 0)
         {
             GameMaster.KillPlayer(this);
@@ -56,7 +55,8 @@ public class scriptSpeler : MonoBehaviour
             HP = 0;
         }
 
-        if (faceRight())
+
+        if (Horizontal > 0 && flipped || Horizontal < 0 && !flipped)
         {
             Flip();
         }
@@ -65,31 +65,19 @@ public class scriptSpeler : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (jump == true)
+        if (jump)
         {
             player.AddForce(new Vector2(0f, jumpForce));
-            jump = false;
-            grounded = false;
         }
-        
     }
 
     // the flip function
     private void Flip()
     {
+        flipped = !flipped;
         Vector3 theScale = transform.localScale;
         theScale.x = -theScale.x;
         transform.localScale = theScale;
-    }
-
-    bool faceRight()
-    {
-        if (Horizontal >= 0)
-            return true;
-        else
-        {
-            return false;
-        }
     }
 
     private void HandleMovement(float Hory)
@@ -105,11 +93,15 @@ public class scriptSpeler : MonoBehaviour
     public void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "Ground")
-        {
             grounded = true;
-        }
     }
-    
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+            grounded = false;
+    }
+
     //TODO: make it so this part is it's own script 
     void OnTriggerEnter2D(Collider2D coll)
     {

@@ -97,7 +97,7 @@ public class Gizmo : MonoBehaviour
         }
         else
         {
-            //change scale to turn around
+            //change scale of laser, so it faces the right way
             laser.transform.localScale = new Vector3(-.3f, .3f, 1);
             GameObject Straal = Instantiate(laser, startPositie, Quaternion.identity) as GameObject;//instantiate
 
@@ -105,7 +105,7 @@ public class Gizmo : MonoBehaviour
         }
     }
 
-    // flippin perfect
+    // flip
     private void Flip(float Hory)
     {
         if (Hory > 0 && !GizmofacingRight || Hory < 0 && GizmofacingRight)
