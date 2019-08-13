@@ -8,11 +8,11 @@ public class WalkingEnemy : Enemy {
     // speed object
     public int speed;
    
-    // it's just to turn the sprite, cause i'm to lazy to turn it in real, also calling the coroutine.
+    // for now a flipping sprite, later add animations
     void Start () {
         
         Vector3 theScale = transform.localScale;
-        theScale.x *= -1;
+        theScale.x = -theScale.x;
         transform.localScale = theScale;
 
         StartCoroutine(MovementHandle());
@@ -27,10 +27,13 @@ public class WalkingEnemy : Enemy {
     IEnumerator MovementHandle ()
     {
         yield return new WaitForSeconds(2);
+
         speed = -speed;
+
         Vector3 theScale = transform.localScale;
-        theScale.x *= -1;
+        theScale.x = -theScale.x;
         transform.localScale = theScale;
+
         StartCoroutine(MovementHandle());
     }
     

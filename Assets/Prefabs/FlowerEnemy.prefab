@@ -242,6 +242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 50
   point: 10
+  Dmg: 5
 --- !u!212 &212273338459667990
 SpriteRenderer:
   m_ObjectHideFlags: 1

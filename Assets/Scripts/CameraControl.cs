@@ -11,13 +11,14 @@ public class CameraControl : MonoBehaviour
     // how fast to follow
     public float speed = 0.125f;
 
+    //FIXME: change to offset
     // only if you don't want the camera to be centered, otherwise just 0.
     public Vector3 offright;
     public Vector3 offleft;
 
     void FixedUpdate()
     {
-     
+
         // to get the not centered right, when you look the other way.
         if (Input.GetAxis("Hor") > 0)
         {

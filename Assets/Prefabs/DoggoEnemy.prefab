@@ -306,6 +306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 200
   point: 30
+  Dmg: 25
   speed: 2
 --- !u!212 &212505910533783906
 SpriteRenderer:

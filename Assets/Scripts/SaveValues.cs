@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
-
+//FIXME: this entire script is fucked
 public class SaveValues : MonoBehaviour {
     // Made by Eric, cause Lotte was too lazy, except the comments, that was Lotte, cause Eric forgot.
 

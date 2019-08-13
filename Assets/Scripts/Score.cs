@@ -19,5 +19,3 @@ public class Score : MonoBehaviour {
         score.text = "Score: " + points;
 	}
 }
-
-//fun fact: You can actuallly die, but, if you do, you respawn, there is no escaping this hell that was supposed to be space, but isn't.

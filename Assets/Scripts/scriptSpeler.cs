@@ -5,9 +5,10 @@ using UnityEngine;
 public class scriptSpeler : MonoBehaviour
 {
 
+    private float Horizontal;
     private float speed = 3f;
     private float jumpForce = 250f;
-
+    private float HP = 100;
 
     // FIXME: why are the collectables done in the player script?
     private int collected;
@@ -23,18 +24,21 @@ public class scriptSpeler : MonoBehaviour
     private Rigidbody2D player;
     private AudioSource Ping;// the sound of collected collectable
 
-    private float HP = 100;
+
 
     void Start()
     {
         HP = 100; // it's also in start so when you die and respawn it gets reset.
         // getting needed components
         player = GetComponent<Rigidbody2D>();
-        Ping = GetComponent<AudioSource>();
+        Ping = GetComponent<AudioSource>(); 
     }
 
     void Update()
     {
+        Horizontal = Input.GetAxis("Hor");
+        HandleMovement(Horizontal);
+        
         // if statement to jump
         if (Input.GetKeyDown(KeyCode.UpArrow) && grounded == true || Input.GetKeyDown(KeyCode.W) && grounded == true)
         {
@@ -51,6 +55,11 @@ public class scriptSpeler : MonoBehaviour
         {
             HP = 0;
         }
+
+        if (faceRight())
+        {
+            Flip();
+        }
     }
 
 
@@ -62,13 +71,35 @@ public class scriptSpeler : MonoBehaviour
             jump = false;
             grounded = false;
         }
-        float Hory = Input.GetAxis("Hor");
-        HandleMovement(Hory);
+        
+    }
+
+    // the flip function
+    private void Flip()
+    {
+        Vector3 theScale = transform.localScale;
+        theScale.x = -theScale.x;
+        transform.localScale = theScale;
+    }
+
+    bool faceRight()
+    {
+        if (Horizontal >= 0)
+            return true;
+        else
+        {
+            return false;
+        }
     }
 
     private void HandleMovement(float Hory)
     {
         player.velocity = new Vector2(Hory * speed, player.velocity.y);
+    }
+
+    public void TakeDamage(float dmg)
+    {
+        HP -= dmg;
     }
 
     public void OnCollisionEnter2D(Collision2D other)
@@ -77,24 +108,23 @@ public class scriptSpeler : MonoBehaviour
         {
             grounded = true;
         }
-
     }
-
+    
+    //TODO: make it so this part is it's own script 
     void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.gameObject.tag == "coll") // collider to collect the collectees
         {
             Ping.Play();
 
-            // the random collectees, and changing color of those.
+            // the random collectables, and changing color of those. //FIXME: plz
             collected = Random.Range(0, 25);
             letter = (char)('a' + collected);
             Debug.Log(letter);
             convert = "" + letter;
             inventory = GameObject.Find(convert);
-            Material mater;
-            mater = inventory.GetComponent<Renderer>().material;
-            mater.color = Color.yellow;
+
+            inventory.GetComponent<Renderer>().material.color = Color.yellow;
         }
         if (coll.gameObject.tag == "End" /* && all the collectables */) // collider to get to the bossfight.
         {
@@ -102,32 +132,7 @@ public class scriptSpeler : MonoBehaviour
         }
     }
 
-    // the flip function
-    private void Flip(bool facingRight)
-    {
-        Vector3 theScale = transform.localScale;
-        theScale.x = -theScale.x;
-        transform.localScale = theScale;
-        if (true)
-        {
-            facingRight = !facingRight;
-
-            //change scale to flip image
-        }
-    }
-
-    bool faceRight()
-    {
-        float Horizontal = Input.GetAxis("Hor");
-        if (Horizontal > 0)
-            return true;
-        else if(Horizontal < 0)
-        {
-            return false;
-        }
-        else { return true; }
-    }
-
+    //FIXME: should be done by dedicated script
     // the door function, it places the menu active to proceed to the 'end'.
     void Door()
     {
@@ -135,9 +140,5 @@ public class scriptSpeler : MonoBehaviour
         Time.timeScale = 0f;
     }
 
-    public void TakeDamage(float dmg)
-    {
-        HP -= dmg;
-    }
 
 }

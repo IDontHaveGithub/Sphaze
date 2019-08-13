@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollSpawn : MonoBehaviour {
-    
+public class CollSpawn : MonoBehaviour
+{
+
     public float spawnDelay = 2f;
 
     public GameObject SpawnStuff;
@@ -26,7 +27,7 @@ public class CollSpawn : MonoBehaviour {
             SpawnAgain();
         }
     }
-    
+
     bool AllDead()
     {
         foreach (Transform childpositionGameObject in transform)

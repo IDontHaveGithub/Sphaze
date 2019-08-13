@@ -4,14 +4,10 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
-    // how much damage dealt
-    private float Dmg = 10f;
-    // how much health itself
-    public float HP = 200;
-    //amount of points if killed
-    public float point = 30f;
-
+    public float HP;
+    public float point;
+    public float Dmg;
+    
     // collision to damage the player
     private void OnCollisionEnter2D(Collision2D collision)
     {

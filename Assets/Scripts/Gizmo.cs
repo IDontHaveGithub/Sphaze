@@ -4,7 +4,8 @@ using UnityEngine;
 
 
 
-public class Gizmo : MonoBehaviour {
+public class Gizmo : MonoBehaviour
+{
 
     // a lot of this script has been taken away from the cameraControl, 
     //it uses the same script practically, just slight variations of the offset, right and left.
@@ -82,7 +83,7 @@ public class Gizmo : MonoBehaviour {
         else
             return false;
     }
-    
+
     // shooting part still take from the SpaceInvaders.
     void Fire()
     {
@@ -94,9 +95,10 @@ public class Gizmo : MonoBehaviour {
 
             Straal.GetComponent<Rigidbody2D>().velocity = new Vector3(6, 0, 0);//shoot off
         }
-        else {
+        else
+        {
             //change scale to turn around
-            laser.transform.localScale = new Vector3(-.3f,.3f,1);
+            laser.transform.localScale = new Vector3(-.3f, .3f, 1);
             GameObject Straal = Instantiate(laser, startPositie, Quaternion.identity) as GameObject;//instantiate
 
             Straal.GetComponent<Rigidbody2D>().velocity = new Vector3(-6, 0, 0);//shoot off

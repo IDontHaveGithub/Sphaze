@@ -2,37 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollScript : MonoBehaviour {
+public class CollScript : MonoBehaviour
+{
 
     // get the sprite in gameobject
     public GameObject LittleLight;
     public static int lightCount;
-    
 
-	// Use this for initialization
-	void Start () {
-        //there it is, the wittlewhitey
+
+    // Use this for initialization
+    void Start()
+    {
         LittleLight = GetComponent<GameObject>();
-        // all objects add one to the count.
-        lightCount++;
-	}
-	
-	// Update is called once per frame
-	void Update () {
+        lightCount++; //for every initialization of Collscript a light gets added
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         //check in console if you have them all.
-		if(lightCount <= 0f)
+        if (lightCount <= 0f)
         {
             print("You got 'em all!");
         }
-	}
+    }
 
     // if hit by player, get points, destroy object and lose one on lightCount
-    void OnTriggerEnter2D(Collider2D player)
+    void OnTriggerEnter2D(Collider2D col)
     {
-        
-        if (player.gameObject.tag == "Player")
+        scriptSpeler player = col.GetComponent<scriptSpeler>();
+        if (player)
         {
-            
             Score.points += 10f;
             Destroy(gameObject);
             lightCount--;
