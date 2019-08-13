@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class WalkingEnemy : MonoBehaviour {
+public class WalkingEnemy : Enemy {
 
     // speed object
     public int speed;
@@ -21,7 +21,6 @@ public class WalkingEnemy : MonoBehaviour {
 	// just the basic movement
 	void Update () {
         transform.Translate(Vector3.right * speed * Time.deltaTime);
-        
     }
 
     // every two seconds, walk the other way and flip.

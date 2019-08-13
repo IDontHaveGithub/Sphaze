@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4201440524023266}
   - component: {fileID: 212505910533783906}
   - component: {fileID: 60485513674568258}
-  - component: {fileID: 114655798900151394}
   - component: {fileID: 50697504807082520}
   - component: {fileID: 114667733310506542}
   m_Layer: 0
@@ -294,19 +293,6 @@ PolygonCollider2D:
       - {x: -2.9399998, y: -3.5449998}
       - {x: -2.81, y: -3.495}
       - {x: -2.69, y: -3.445}
---- !u!114 &114655798900151394
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1187677319750242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cac776ff5dd1f69459969926cbacae1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HP: 250
-  point: 40
 --- !u!114 &114667733310506542
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -318,6 +304,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14c14949de6f09348b11e050d655be8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HP: 200
+  point: 30
   speed: 2
 --- !u!212 &212505910533783906
 SpriteRenderer:

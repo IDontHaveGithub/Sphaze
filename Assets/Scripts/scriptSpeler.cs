@@ -5,35 +5,29 @@ using UnityEngine;
 public class scriptSpeler : MonoBehaviour
 {
 
-    // basic speed and rigidbody
-    public float speed;
-    private Rigidbody2D player;
+    private float speed = 3f;
+    private float jumpForce = 250f;
 
 
-    public static bool facingRight;
-
-    public static float HP = 100;
-
-    // collectables, the character you collect, the converting and the collected gameobject.
+    // FIXME: why are the collectables done in the player script?
     private int collected;
     private char letter;
-    string convert;
-    private GameObject invent;
+    private string convert;
+
+    public GameObject EndMenuUI; //FIXME: this prefab is broken
+    private GameObject inventory;
 
     private bool jump = false;
-    bool grounded = false;
-    float jumpForce = 250f;
+    private bool grounded = false;
 
-    // menu that pops up if you hit the door
-    public GameObject EndMenuUI;
+    private Rigidbody2D player;
+    private AudioSource Ping;// the sound of collected collectable
 
-    // sounds
-    AudioSource Ping;// the sound of collected collectable
+    private float HP = 100;
 
     void Start()
     {
         HP = 100; // it's also in start so when you die and respawn it gets reset.
-        facingRight = true; // you start by looking right
         // getting needed components
         player = GetComponent<Rigidbody2D>();
         Ping = GetComponent<AudioSource>();
@@ -64,13 +58,12 @@ public class scriptSpeler : MonoBehaviour
     {
         if (jump == true)
         {
-            player.AddForce(new Vector2(0f, jumpForce)); // how to go up, when jumping
-            jump = false; // so if this gets deleted you can fly, well at least you go up and up and up.
-            grounded = false; // I don't want a double jump.
+            player.AddForce(new Vector2(0f, jumpForce));
+            jump = false;
+            grounded = false;
         }
-        float Hory = Input.GetAxis("Hor"); // to get the horizontal axis, so you get the way you walk to get the way you look
-        HandleMovement(Hory); // and to do the walk
-        Flip(Hory); // and to do the flip
+        float Hory = Input.GetAxis("Hor");
+        HandleMovement(Hory);
     }
 
     private void HandleMovement(float Hory)
@@ -98,27 +91,41 @@ public class scriptSpeler : MonoBehaviour
             letter = (char)('a' + collected);
             Debug.Log(letter);
             convert = "" + letter;
-            invent = GameObject.Find(convert);
+            inventory = GameObject.Find(convert);
             Material mater;
-            mater = invent.GetComponent<Renderer>().material;
+            mater = inventory.GetComponent<Renderer>().material;
             mater.color = Color.yellow;
         }
-        if (coll.gameObject.tag == "End" /* && all the flippin lights */) // collider to get to the bossfight.
+        if (coll.gameObject.tag == "End" /* && all the collectables */) // collider to get to the bossfight.
         {
             Door();
         }
     }
 
     // the flip function
-    private void Flip(float Hory)
+    private void Flip(bool facingRight)
     {
-        if (Hory > 0 && !facingRight || Hory < 0 && facingRight)
+        Vector3 theScale = transform.localScale;
+        theScale.x = -theScale.x;
+        transform.localScale = theScale;
+        if (true)
         {
             facingRight = !facingRight;
-            Vector3 theScale = transform.localScale;
-            theScale.x *= -1;
-            transform.localScale = theScale;
+
+            //change scale to flip image
         }
+    }
+
+    bool faceRight()
+    {
+        float Horizontal = Input.GetAxis("Hor");
+        if (Horizontal > 0)
+            return true;
+        else if(Horizontal < 0)
+        {
+            return false;
+        }
+        else { return true; }
     }
 
     // the door function, it places the menu active to proceed to the 'end'.
@@ -126,7 +133,11 @@ public class scriptSpeler : MonoBehaviour
     {
         EndMenuUI.SetActive(true);
         Time.timeScale = 0f;
+    }
 
+    public void TakeDamage(float dmg)
+    {
+        HP -= dmg;
     }
 
 }

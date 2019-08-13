@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: 114496067747072808}
   - component: {fileID: 95149530988553078}
   - component: {fileID: 60426461800953632}
-  - component: {fileID: 114974304019449030}
   m_Layer: 0
   m_Name: BirdEnemy
   m_TagString: Untagged
@@ -244,18 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1621ce3de3fa42649b924017a931be64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114974304019449030
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1382844822765352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cac776ff5dd1f69459969926cbacae1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HP: 200
+  HP: 100
   point: 30
 --- !u!212 &212057989939810456
 SpriteRenderer:

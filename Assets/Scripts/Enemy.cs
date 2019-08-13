@@ -12,13 +12,13 @@ public class Enemy : MonoBehaviour
     //amount of points if killed
     public float point = 30f;
 
-
     // collision to damage the player
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        scriptSpeler player = collision.gameObject.GetComponent<scriptSpeler>();
+        if (player)
         {
-            scriptSpeler.HP = scriptSpeler.HP - Dmg;
+            player.TakeDamage(Dmg);
         }
     }
 
@@ -34,7 +34,6 @@ public class Enemy : MonoBehaviour
                 Score.points += point;
                 Destroy(gameObject);
             }
-
         }
     }
 

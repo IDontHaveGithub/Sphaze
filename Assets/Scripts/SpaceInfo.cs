@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class SpaceInfo : MonoBehaviour {
 
-    // this script is getting put on every space ninja throughtput the level, just to give tips, or warnings.
-    // they're practically to tell you about the bugs, before you see them yourself ;p
+    /// this script is getting put on every space ninja throughout the level, just to give tips, or warnings.
+    /// they're practically to tell you about the bugs, before you see them yourself ;p
+    /// until it gets fixed
     public GameObject InfoSpace;
 
     private void Start()

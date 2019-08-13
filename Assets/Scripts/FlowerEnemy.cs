@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlowerEnemy : MonoBehaviour {
+public class FlowerEnemy : Enemy {
 
     // a lot has been taken out of this script, scince it doesn't work with the animator that's also on it, 
     // maybe it will be erased later, or the animator will go, or get changed

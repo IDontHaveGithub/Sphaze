@@ -19,7 +19,7 @@ public class CameraControl : MonoBehaviour
     {
      
         // to get the not centered right, when you look the other way.
-        if (scriptSpeler.facingRight)
+        if (Input.GetAxis("Hor") > 0)
         {
             Vector3 desiredPos = Target.position + offright;
             Vector3 smoothPos = Vector3.Lerp(transform.position, desiredPos, 0.05f);
@@ -34,28 +34,24 @@ public class CameraControl : MonoBehaviour
 
     }
 
-    //constantly check for player.
-    public void Update()
+    private void Update()
     {
-        if (Target == null)
-        {
-            FindPlayer(true);
-            return;
-        }
-    }
-
-    // when the player dies, it gets respawned, but the player object is gone for a bit, this way you'll find the player again.
-    public void FindPlayer(bool findSwitch)
-    {
-        if (findSwitch == true)
+        if (!FindPlayer())
         {
             GameObject searchResult = GameObject.FindGameObjectWithTag("Player");
-            if (searchResult != null)
+            if (searchResult)
             {
                 Target = searchResult.transform;
             }
-            findSwitch = false;
         }
+    }
 
+    // Check if there is a player
+    public bool FindPlayer()
+    {
+        if (!Target)
+            return false;
+        else
+            return true;
     }
 }
